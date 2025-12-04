@@ -116,8 +116,10 @@ if st.session_state["authentication_status"]:
     if not st.session_state.welcome_shown:
         if st.session_state["name"] == "root":
             st.success(f"Bienvenue {st.session_state['name']} (admin) sur l'app impressionante !")
+            page1()
         else:
             st.success(f"Bienvenue {st.session_state['name']} sur l'app impressionante !")
+            page1()
         st.session_state.welcome_shown = True
 elif st.session_state["authentication_status"] is False:
     st.error("Nom d'utilisateur ou mot de passe incorrect")
@@ -128,3 +130,4 @@ elif st.session_state["authentication_status"] is None:
 
 # Permet de lancer la page active pour du multipage    
 current_page.run()
+
