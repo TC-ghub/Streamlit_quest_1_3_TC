@@ -44,7 +44,7 @@ authenticator = stauth.Authenticate(
 
 # Login
 authenticator.login()
-st.write('user = utilisateur & MDP = utilisateurMDP")
+st.markdown('<div class="main-bis-text">User = utilisateur  &  MDP = utilisateurMDP</div>', unsafe_allow_html=True)
 
 # Initialisation de l'état de session pour le message de bienvenue
 if "welcome_shown" not in st.session_state:
@@ -131,5 +131,6 @@ else:
         st.session_state.welcome_shown = False
     else:
         st.info("Veuillez vous connecter pour accéder à l'application.")
+
 
 
