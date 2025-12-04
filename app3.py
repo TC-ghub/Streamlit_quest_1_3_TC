@@ -1,5 +1,4 @@
 import streamlit as st
-import utils as utl
 import streamlit_authenticator as stauth
 from pathlib import Path
 from streamlit_option_menu import option_menu
@@ -128,5 +127,4 @@ elif st.session_state["authentication_status"] is None:
     st.session_state.welcome_shown = False  # Reset when not logged in
 
 # Permet de lancer la page active pour du multipage    
-
 current_page.run()
