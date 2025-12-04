@@ -49,6 +49,22 @@ authenticator.login()
 if "welcome_shown" not in st.session_state:
     st.session_state.welcome_shown = False
 
+if st.session_state["authentication_status"]:
+    # Show welcome message only once after login
+    if not st.session_state.welcome_shown:
+        if st.session_state["name"] == "root":
+            st.success(f"Bienvenue {st.session_state['name']} (admin) sur l'app impressionante !")
+            page1()
+        else:
+            st.success(f"Bienvenue {st.session_state['name']} sur l'app impressionante !")
+            page1()
+        st.session_state.welcome_shown = True
+elif st.session_state["authentication_status"] is False:
+    st.error("Nom d'utilisateur ou mot de passe incorrect")
+    st.session_state.welcome_shown = False  # Reset when login fails
+elif st.session_state["authentication_status"] is None:
+    st.warning("Les champs username et mot de passe doivent être remplis")
+    st.session_state.welcome_shown = False  # Reset when not logged in
 
 def page1():
     # Je créé trois colonnes pour centrer le contenu
@@ -111,23 +127,7 @@ if st.session_state["authentication_status"]:
 # On ajoute un petit titre en haut à gauche de la page pour rappeler sur quelle page on est
 st.title(f"{current_page.icon} {current_page.title}")
 
-if st.session_state["authentication_status"]:
-    # Show welcome message only once after login
-    if not st.session_state.welcome_shown:
-        if st.session_state["name"] == "root":
-            st.success(f"Bienvenue {st.session_state['name']} (admin) sur l'app impressionante !")
-            page1()
-        else:
-            st.success(f"Bienvenue {st.session_state['name']} sur l'app impressionante !")
-            page1()
-        st.session_state.welcome_shown = True
-elif st.session_state["authentication_status"] is False:
-    st.error("Nom d'utilisateur ou mot de passe incorrect")
-    st.session_state.welcome_shown = False  # Reset when login fails
-elif st.session_state["authentication_status"] is None:
-    st.warning("Les champs username et mot de passe doivent être remplis")
-    st.session_state.welcome_shown = False  # Reset when not logged in
-
 # Permet de lancer la page active pour du multipage    
 current_page.run()
+
 
