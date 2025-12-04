@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 
 
 # On intègre un CSS personnalisé
-css_path = Path(__file__).parent / "Frontend" / "CSS" / "streamlit.css"
+css_path = Path(__file__).parent / "streamlit.css"
 if css_path.exists():
     with open(css_path, encoding="utf-8") as f:
         css_content = f.read()
@@ -130,3 +130,4 @@ else:
         st.session_state.welcome_shown = False
     else:
         st.info("Veuillez vous connecter pour accéder à l'application.")
+
