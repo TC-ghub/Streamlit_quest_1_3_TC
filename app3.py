@@ -6,7 +6,7 @@ from streamlit_option_menu import option_menu
 
 
 # On intègre un CSS personnalisé
-css_path = Path(__file__).parent / "Frontend" / "CSS" / "streamlit.css"
+css_path = Path(__file__).parent / "streamlit.css"
 if css_path.exists():
     with open(css_path, encoding="utf-8") as f:
         css_content = f.read()
@@ -128,4 +128,5 @@ elif st.session_state["authentication_status"] is None:
     st.session_state.welcome_shown = False  # Reset when not logged in
 
 # Permet de lancer la page active pour du multipage    
+
 current_page.run()
